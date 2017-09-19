@@ -34,8 +34,12 @@
     </div>
     
     <script src="/public/assets/jquery/jquery.min.js"></script>
+    <script src="/public/assets/jquery-cookie/jquery.cookie.js"></script>
     <script src="/public/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/public/js/common.js"></script>
+
     <script type="text/javascript">
+
         $("#loginBtn").click(function(){
          $.ajax({
             type:"post",
@@ -43,8 +47,9 @@
             data: $("#loginForm").serialize(),
             dataType:"json",
             success:function(data){
-                console.log(data);
                  if(data.code == 200){
+                     //把用户的登录信息存储到cookie中，方便跨页面共享数据。
+                     $.cookie("loginInfo",JSON.stringify(data.result),{pash:"/"});
                     location.href = "/main/index";
                  }
             }
