@@ -1,4 +1,4 @@
-define(["jquery", "template"], function ($, template) {
+define(["jquery", "template","bootstrap"], function ($, template) {
     $.ajax({
         type: "get",
         url: "/api/teacher",
@@ -37,6 +37,26 @@ define(["jquery", "template"], function ($, template) {
                                $(that).html("注销");
                            }
                        }
+                    }
+                })
+            })
+            //点击查看按钮功能
+            $(".teacherLook").click(function () {
+                //点击按钮获取的数据
+                var td = $(this).parent();
+                var tcId = td.attr("tcId");
+                var tcStatus = td.attr("tcStatus");
+                //前后台交互
+                $.ajax({
+                    type:"get",
+                    url:"/api/teacher/view",
+                    data:{tc_id:tcId},
+                    dataType:"json",
+                    success: function (data) {
+                        console.log(data);
+                        var html = template("look",data.result);
+                        $("#lookModel").html(html);
+                        $("#teacherModal").modal();
                     }
                 })
             })
