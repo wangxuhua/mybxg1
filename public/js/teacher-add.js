@@ -1,4 +1,4 @@
-define(["jquery","template"],function($,template){
+define(["jquery","template","datepicker","language"],function($,template){
     //获取编辑按钮对应的id值
     var search = location.search;
     var val = search.substr(1);
