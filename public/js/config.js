@@ -7,7 +7,8 @@
          bootstrap:"bootstrap/js/bootstrap.min",
          common:"../js/common",
          login:"../js/login",
-         teacherlist:"../js/teacher-list"
+         teacherlist:"../js/teacher-list",
+         teacheradd:"../js/teacher-add"
      },
      shim:{
          bootstrap:{
