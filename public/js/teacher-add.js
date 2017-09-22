@@ -26,20 +26,30 @@ define(["jquery","template"],function($,template){
                 data.result.operate = "编辑讲师";
                 var html = template("addTpl",data.result);
                 $("#teacherAdd").html(html);
+                fn("/api/teacher/update");
             }
         })
         //没有是提交功能
     }else{
         var html = template("addTpl",{operate:"添加讲师"});
         $("#teacherAdd").html(html);
-        $.ajax({
-            type:"post",
-            url:"/apiteacher/add",
-            data:$("#teachForm").serialize(),
-            dataType:"jaon",
-            success: function (data) {
-                console.log(data);
-            }
+        fn("/api/teacher/add");
+    }
+    //实现表单提交
+    function fn(url){
+        $("#commit").click(function () {
+            $.ajax({
+                type:"post",
+                url:url,
+                data:$("#teachForm").serialize(),
+                dataType:"json",
+                success: function (data) {
+
+                    if(data.code == 200){
+                        location.href = "/teacher/list"
+                    }
+                }
+            })
         })
     }
 
