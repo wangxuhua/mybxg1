@@ -14,6 +14,10 @@
          language:"bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min",//日期语言插件
          validate:"validate/jquery-validate.min",//表单验证插件
          form:"jquery-form/jquery.form",//表单提交插件
+         settings:"../js/settings",
+         region:"jquery-region/jquery.region",//三级下拉插件
+         ckeditor : 'ckeditor/ckeditor',//文本域插件
+         uploadify:"uploadify/jquery.uploadify",//头像上传插件
      },
      shim:{
          bootstrap:{
@@ -32,6 +36,15 @@
              deps:["jquery"]
          },
          form:{
+             deps:["jquery"]
+         },
+         region:{
+             deps:["jquery"]
+         },
+         ckeditor : {
+             exports : 'CKEDITOR'
+         },
+         uploadify:{
              deps:["jquery"]
          }
      }
